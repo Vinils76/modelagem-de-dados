@@ -1,2 +1,2 @@
 # modelagem-de-dados
- Atividades de modelagemd e banco de dados
+ Atividades de modelagem e banco de dados
