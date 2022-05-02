@@ -57,3 +57,40 @@ INSERT INTO produtos(nome, descricao, preco,quantidade, fabricante_id) VALUES
   ),
 );
 ```
+
+```sql
+INSERT INTO fabricantes (nome) VALUES ('Positivo'), ('Microsoft');
+```
+
+```sql
+INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES(
+    'X-box',
+    'Console de última geração com acesso aos melhores jogos',
+    2500,
+    6,
+    8 # microsoft
+),
+(
+    'Ultrabook',
+    'Equipamento com processador AMD Ryzen5, 12GB de RAM, placa de vídeo RTX',
+    4500.68,
+    12,
+    7 # Positivo
+);
+```
+
+
+## SELECT
+
+### Ler dados da tabela Produtos
+```sql
+SELECT * FROM produtos;
+SELECT nome, preco FROM produtos;
+SELECT nome FROM produtos WHERE preco < 5000;
+
+SELECT nome, descricao FROM produtos
+WHERE fabricante_id = 3; # Apple
+```
+
+## Operadores Lógicos: E OU
+
