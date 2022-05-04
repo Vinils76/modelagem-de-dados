@@ -127,7 +127,20 @@ FROM produtos;
 -- ROUND (Arredondamento)
 SELECT ROUND(AVG(preco)) AS "Média dos Preços"
 FROM produtos;
+
+SELECT COUNT(id) AS "Quantidade de produtos"
+FROM produtos;
+
+-- DISTINCT (comando para evitar a repetição na contagem em campos que não são chave primária)
+SELECT COUNT(DISTINCT fabricante_id) AS "Qtd de fabricantes"
+FROM produtos;
+
+INSERT INTO produtos (id, nome, descricao, preco, quantidade, fabricante_id) VALUES (NULL, 'Teclado Gamer', 'Teclado de última geração com teclas mecânicas e ótimo tempo de resposta com led embutido.', 380, 8, 8), (NULL, 'Placa-mãe', 'Placa com diversos slots de memória ram muito top bem rápido muito louco do caramba', 1200, 5, 1)
+
+SELECT nome, preco, quantidade, (preco * quantidade) AS TOTAL
+FROM produtos;
 ```
+
 
 
 
