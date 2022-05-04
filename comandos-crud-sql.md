@@ -85,12 +85,49 @@ INSERT INTO produtos(nome, descricao, preco, quantidade, fabricante_id) VALUES(
 ### Ler dados da tabela Produtos
 ```sql
 SELECT * FROM produtos;
+
 SELECT nome, preco FROM produtos;
+
 SELECT nome FROM produtos WHERE preco < 5000;
 
 SELECT nome, descricao FROM produtos
 WHERE fabricante_id = 3; # Apple
 ```
 
-## Operadores Lógicos: E OU
+## Operadores Lógicos: E OU 
+
+### Filtros
+```sql
+SELECT nome, preco FROM produtos ORDER BY nome; -- ASC (ordem padrão crescente)
+
+SELECT nome, preco FROM produtos ORDER BY nome DESC; 
+
+SELECT nome, descricao FROM produtos WHERE descricao LIKE '%processador%'; -- LIKE (COMO)
+
+-- % Operador coringa (Significa qualquer texto)
+```
+
+### Operações e Funções de agregação
+```sql
+SELECT SUM(preco) FROM produtos; -- SUM (SOMA)
+
+SELECT SUM(preco) AS total -- ALIAS(APELIDO)
+FROM produtos;
+
+SELECT SUM(quantidade) AS "Quantidade em Estoque"
+FROM produtos;
+
+SELECT SUM(quantidade) AS "Quantidade em Estoque"
+FROM produtos WHERE fabricante_id = 3; -- Apple
+
+-- AVG (AVERAGE) MÉDIA
+SELECT AVG(preco) AS "Média dos Preços"
+FROM produtos;
+
+-- ROUND (Arredondamento)
+SELECT ROUND(AVG(preco)) AS "Média dos Preços"
+FROM produtos;
+```
+
+
 
