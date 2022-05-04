@@ -164,7 +164,91 @@ UPDATE produtos SET quantidade = 15
 WHERE fabricante_id = 1 OR fabricante_id = 3;
 ```
 
-### Atualizar dados de uma Tabela
+### Excluir dados de uma Tabela
+```sql
+DELETE FROM fabricantes WHERE id = 4; -- LG
+
+DELETE FROM produtos
+WHERE preco <= 2000 AND preco > 500; 
+```
+
+## Exercício teste
+
+### Filmes/Gêneros
+```sql
+INSERT INTO filmes (titulo, lancamento, generos_id) VALUES 
+(
+    'Interestelar',
+     2021,
+     1 # ficção cientíica
+),
+(
+    'Jogador N1',
+    2020,
+    3 # Fantasia
+),
+(
+    'Invocação do mal',
+    2018,
+    2 # Terror
+),
+(
+    'Gente grande',
+     2017,
+     4 # Comédia
+),
+(
+    'Harry Potter',
+    2013,
+    3 # Fantasia
+),
+(
+    'A 5 passos de você',
+    2015,
+    5 # Romance
+),
+(
+    'Jogos Mortais',
+    2005,
+    2 
+);
+
+INSERT INTO generos (nome) VALUES ('Ficção Científica');
+
+INSERT INTO generos (nome) VALUES ('Terror');
+
+INSERT INTO generos (nome) VALUES ('Fantasia');
+
+INSERT INTO generos (nome) VALUES ('Comédia');
+
+INSERT INTO fabricantes (nome) VALUES ('Romance');
 
 
+SELECT titulo, lancamento FROM filmes;
+
+SELECT lancamento FROM filmes
+ ORDER BY  lancamento DESC;
+
+ SELECT titulo AS "Melhores Filmes" FROM filmes WHERE id = 1 OR id = 4; 
+
+ SELECT lancamento FROM filmes 
+ WHERE lancamento < 2018;
+
+ SELECT titulo AS "+18" FROM filmes
+ WHERE generos_id = 2;
+
+ UPDATE filmes SET lancamento = 2001 WHERE id = 5;
+
+ UPDATE filmes SET generos_id = 2
+ WHERE
+
+ UPDATE filmes SET titulo = "Jogador N1"
+ WHERE generos_id = 3 AND lancamento = 2018; 
+
+ DELETE FROM filmes WHERE generos_id = 3 AND lancamento = 2005;
+
+ UPDATE filmes SET titulo = "Jogos Mortais"
+ WHERE lancamento = 2006 AND genero_id = 3
+
+```
 
