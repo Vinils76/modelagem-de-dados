@@ -94,7 +94,22 @@ SELECT nome, descricao FROM produtos
 WHERE fabricante_id = 3; # Apple
 ```
 
-## Operadores Lógicos: E OU 
+## Operadores Lógicos: E OU NÂO
+```sql
+SELECT * FROM produtos 
+WHERE preco > 5000 AND preco < 8000;
+
+SELECT nome, preco FROM produtos
+-- WHERE fabricante_id = 3 OR fabricante_id = 8;
+WHERE fabricante_id IN(3, 8); -- usando função IN(lista)
+
+--Monte uma consulta que traga nome, preco e quantidade
+--de todos os produtos exceto os do fabricante apple
+
+SELECT nome, preco, quantidade FROM produtos
+-- WHERE NOT fabricante_id = 3; # versão 1 usando NOT
+WHERE fabricante_id != 3; -- versão 2 usando operador !=
+```
 
 ### Filtros
 ```sql
@@ -170,6 +185,58 @@ DELETE FROM fabricantes WHERE id = 4; -- LG
 
 DELETE FROM produtos
 WHERE preco <= 2000 AND preco > 500; 
+```
+
+```sql
+-- SELECT nomeDaTabela.nomeDaColuna
+SELECT produtos.nome, fabricantes.nome
+
+-- INNER JOIN é o comando que permite JUNTAR tabelas
+FROM produtos INNER JOIN fabricantes
+
+-- ON comando para indicar o critério da junção
+ON produtos.fabricante_id = fabricantes.id;
+
+
+SELECT produtos.nome, fabricantes.nome
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id;
+
+-- Nome do Produto e do Fabricante, ordenados pelo nome do produto
+SELECT 
+    produtos.nome AS Produto, 
+    fabricantes.nome AS Fabricante
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id
+ORDER BY produtos.nome;
+
+-- Fabricante, soma dos preços e quantidade de produtos
+SELECT 
+    fabricantes.nome AS Fabricante,
+    SUM(produtos.preco) AS Total,
+    COUNT(produtos.fabricante_id) AS "Qtd de Produtos"
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id
+GROUP BY Fabricante
+ORDER BY Total;
+
+-- Trazer a quantidade de produtos de cada fabricante
+
+-- INNER JOIN traz os registros somente daqueles fabricantes que tem produtos
+SELECT 
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.id) AS "Quantidade de Produtos"
+FROM produtos INNER JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id
+GROUP BY Fabricante;
+
+-- RIGHT/LEFT JOIN traz os registros mesmo daqueles fabricantes que não tem produtos
+SELECT 
+    fabricantes.nome AS Fabricante,
+    COUNT(produtos.id) AS "Quantidade de Produtos"
+FROM produtos RIGHT JOIN fabricantes
+ON produtos.fabricante_id = fabricantes.id
+GROUP BY Fabricante;
 ```
 
 ## Exercício teste
