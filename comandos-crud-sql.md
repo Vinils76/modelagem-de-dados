@@ -380,4 +380,13 @@ UPDATE professores SET areaDeAtuacao = "infra" WHERE id = 1;
 
 UPDATE cursos SET professores_id = 4 WHERE cargaHoraria = 40;
 
+
+INSERT INTO alunos (nome, dataDeNascimento, primeiraNota, segundaNota, cursos-id) VALUES
+(
+    "Bocão",
+    "2020-05-08",
+    9.5,
+    5.8,
+    11);
+```
 ```
