@@ -45,3 +45,9 @@ ALTER TABLE produtos
 ```sql
 ALTER TABLE produtos ADD fabricante_id INT NOT NULL AFTER preco;
 ```
+
+ALTER TABLE professores
+    # CONSTRAINT é uma restrição definida no relacionamento
+    ADD CONSTRAINT fk_professores_cursos
+        # A chave estrangeira deve fazer referência à chave primária
+    FOREIGN KEY (cursos_id) REFERENCES cursos(id);
